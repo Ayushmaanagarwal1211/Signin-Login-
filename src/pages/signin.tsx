@@ -35,6 +35,7 @@ async function createUser(data: FormData): Promise<void> {
           phonenumber: data.phonenumber,
           username: data.username,
           isVerify: false,
+          url:router.asPath
         }),
       }).then((res) => {
         res.json().then((d) => {
