@@ -14,6 +14,7 @@ export default function TokenVerify(): JSX.Element {
         body: JSON.stringify({
           token: token,
           isVerify: true,
+          url:router.asPath
         }),
       });
       router.push('/loginbyemail');
@@ -24,6 +25,7 @@ export default function TokenVerify(): JSX.Element {
           token: token,
           isVerify: false,
           reset: false,
+          url:router.asPath
         }),
       }).then((res) => {
         res.json().then(async (ans) => {
