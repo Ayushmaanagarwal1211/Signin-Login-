@@ -39,8 +39,8 @@ await transport.sendMail({
   from: '"Lovi" <loviagarwal55@gmail.com>', // sender address
 to: req.body.email, // list of receivers
 subject: "Verification", // Subject line
-text:`Your Verification Link Is :- http://localhost:3000/passwordreset?token=${token}&reser=true`, // plain text body
-html: `<b>Your Verification Link Is :- http://localhost:3000/passwordreset?token=${token}&reset=true</b>`, // html body
+text:`Your Verification Link Is :- ${req.body.url}/passwordreset?token=${token}&reser=true`, // plain text body
+html: `<b>Your Verification Link Is :- ${req.body.url}/passwordreset?token=${token}&reser=true</b>`, // html body
 }).then((success)=>{
   console.log("MESSAGE SENT")
 })
