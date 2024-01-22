@@ -9,23 +9,29 @@ export default function TokenVerify(): JSX.Element {
     console.log(token);
 
     if (!reset) {
+       let location=window.location.href
+    const lastSlashIndex = location.lastIndexOf('/');
+let finalUrl=location.substring(0, lastSlashIndex);
       await fetch('api/adduser', {
         method: 'POST',
         body: JSON.stringify({
           token: token,
           isVerify: true,
-          url:router.asPath
+          url:finalUrl
         }),
       });
       router.push('/loginbyemail');
     } else {
+       let location=window.location.href
+    const lastSlashIndex = location.lastIndexOf('/');
+let finalUrl=location.substring(0, lastSlashIndex);
       await fetch('api/checkuser', {
         method: 'POST',
         body: JSON.stringify({
           token: token,
           isVerify: false,
           reset: false,
-          url:router.asPath
+          url:finalUrl
         }),
       }).then((res) => {
         res.json().then(async (ans) => {
