@@ -53,6 +53,7 @@ export default function LoginByEmail() {
       body: JSON.stringify({
         email: data.email,
         reset: true,
+        url:router.asPath
       }),
     }).then((res) => {
       res.json().then((ans) => {
