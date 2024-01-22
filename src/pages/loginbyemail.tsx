@@ -48,12 +48,15 @@ export default function LoginByEmail() {
   };
 
   const handleResetPass = async (data: { email: string }) => {
+   let location=window.location.href
+    const lastSlashIndex = location.lastIndexOf('/');
+let finalUrl=location.substring(0, lastSlashIndex);
     await fetch("api/checkuser", {
       method: "POST",
       body: JSON.stringify({
         email: data.email,
         reset: true,
-        url:router.asPath
+        url:finalUrl
       }),
     }).then((res) => {
       res.json().then((ans) => {
