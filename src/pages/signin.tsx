@@ -25,7 +25,9 @@ function showpop(msg){
 }
 
 async function createUser(data: FormData): Promise<void> {
-    console.log(data);
+    let location=window.location.href
+    const lastSlashIndex = location.lastIndexOf('/');
+let finalUrl=location.substring(0, lastSlashIndex);
     if (data.password === data.repassword) {
       await fetch("api/adduser", {
         method: "POST",
@@ -35,7 +37,7 @@ async function createUser(data: FormData): Promise<void> {
           phonenumber: data.phonenumber,
           username: data.username,
           isVerify: false,
-          url:router.asPath
+          url:finalUrl
         }),
       }).then((res) => {
         res.json().then((d) => {
